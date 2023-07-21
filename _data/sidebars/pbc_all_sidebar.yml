@@ -2790,48 +2790,50 @@ entries:
       - title: Ratings and Reviews
         url: /docs/pbc/all/ratings-reviews/ratings-and-reviews.html
         nested:
-          - title: What's changed in Ratings and Reviews
-            url: /docs/pbc/all/ratings-reviews/whats-changed-in-ratings-and-reviews.html
-          - title: Install and upgrade
+          - title: Bazaarvoice
+            url: /docs/pbc/all/ratings-reviews/bazaarvoice/bazaarvoice.html
             nested:
-              - title: Install the Product Rating and Reviews feature
-                url: /docs/pbc/all/ratings-reviews/install-and-upgrade/install-the-product-rating-and-reviews-feature.html
-              - title: Install the Product Rating and Reviews + Product Group feature
-                url: /docs/pbc/all/ratings-reviews/install-and-upgrade/install-the-product-rating-and-reviews-product-group-feature.html
-              - title: Install the Product Rating and Reviews Glue API
-                url: /docs/pbc/all/ratings-reviews/install-and-upgrade/install-the-product-rating-and-reviews-glue-api.html
-          - title: Import and export data
-            url: /docs/pbc/all/ratings-reviews/import-and-export-data/ratings-and-reviews-data-import.html
-            nested:
-              - title: File details- product_review.csv
-                url: /docs/pbc/all/ratings-reviews/import-and-export-data/file-details-product-review.csv.html
-          - title: Manage in the Back Office
-            url: /docs/pbc/all/ratings-reviews/manage-in-the-back-office/log-into-the-back-office.html
-            nested:
-              - title: Manage product reviews
-                url: /docs/pbc/all/ratings-reviews/manage-in-the-back-office/manage-product-reviews-in-the-back-office.html
-          - title: Manage using Glue API
-            nested:
-              - title: Manage product reviews using Glue API
-                url: /docs/pbc/all/ratings-reviews/manage-using-glue-api/manage-product-reviews-using-glue-api.html
-              - title: Retrieve product reviews when retrieving abstract products
-                url: /docs/pbc/all/ratings-reviews/manage-using-glue-api/retrieve-product-reviews-when-retrieving-abstract-products.html
-              - title: Retrieving product reviews when retrieving concrete products
-                url: /docs/pbc/all/ratings-reviews/manage-using-glue-api/retrieve-product-reviews-when-retrieving-concrete-products.html
-          - title: Tutorials and HowTos
-            nested:
-              - title: "HowTo: Configure product reviews"
-                url: /docs/pbc/all/ratings-reviews/tutorials-and-howtos/howto-configure-product-reviews.html
-          - title: Third-party integrations
-            nested:
-              - title: Bazaarvoice
-                url: /docs/pbc/all/ratings-reviews/third-party-integrations/bazaarvoice.html
               - title: Integrate Bazaarvoice
-                url: /docs/pbc/all/ratings-reviews/third-party-integrations/integrate-bazaarvoice.html
+                url: /docs/pbc/all/ratings-reviews/bazaarvoice/integrate-bazaarvoice.html
               - title: Configure Bazaarvoice
-                url: /docs/pbc/all/ratings-reviews/third-party-integrations/configure-bazaarvoice.html
+                url: /docs/pbc/all/ratings-reviews/bazaarvoice/configure-bazaarvoice.html
               - title: Disconnect Bazaarvoice
-                url: /docs/pbc/all/ratings-reviews/third-party-integrations/disconnect-bazaarvoice.html
+                url: /docs/pbc/all/ratings-reviews/bazaarvoice/disconnect-bazaarvoice.html
+          - title: Spryker Reviews
+            url: /docs/pbc/all/ratings-reviews/spryker-reviews/spryker-reviews.html
+            nested:
+              - title: Base Shop
+                nested:
+                  - title: What's changed in Ratings and Reviews
+                    url: /docs/pbc/all/ratings-reviews/spryker-reviews/whats-changed-in-ratings-and-reviews.html
+                  - title: Install and upgrade
+                    nested:
+                      - title: Install the Product Rating and Reviews feature
+                        url: /docs/pbc/all/ratings-reviews/spryker-reviews/base-shop/install-and-upgrade/install-the-product-rating-and-reviews-feature.html
+                      - title: Install the Product Rating and Reviews + Product Group feature
+                        url: /docs/pbc/all/ratings-reviews/spryker-reviews/base-shop/install-and-upgrade/install-the-product-rating-and-reviews-product-group-feature.html
+                      - title: Install the Product Rating and Reviews Glue API
+                        url: /docs/pbc/all/ratings-reviews/spryker-reviews/base-shop/install-and-upgrade/install-the-product-rating-and-reviews-glue-api.html
+                  - title: Import and export data
+                    nested:
+                      - title: File details- product_review.csv
+                        url: /docs/pbc/all/ratings-reviews/spryker-reviews/base-shop/import-and-export-data/file-details-product-review.csv.html
+                  - title: Manage in the Back Office
+                    nested:
+                      - title: Manage product reviews
+                        url: /docs/pbc/all/ratings-reviews/spryker-reviews/base-shop/manage-in-the-back-office/manage-product-reviews-in-the-back-office.html
+                  - title: Manage using Glue API
+                    nested:
+                      - title: Manage product reviews using Glue API
+                        url: /docs/pbc/all/ratings-reviews/spryker-reviews/base-shop/manage-using-glue-api/manage-product-reviews-using-glue-api.html
+                      - title: Retrieve product reviews when retrieving abstract products
+                        url: /docs/pbc/all/ratings-reviews/spryker-reviews/base-shop/manage-using-glue-api/retrieve-product-reviews-when-retrieving-abstract-products.html
+                      - title: Retrieving product reviews when retrieving concrete products
+                        url: /docs/pbc/all/ratings-reviews/spryker-reviews/base-shop/manage-using-glue-api/retrieve-product-reviews-when-retrieving-concrete-products.html
+                  - title: Tutorials and HowTos
+                    nested:
+                      - title: "HowTo: Configure product reviews"
+                        url: /docs/pbc/all/ratings-reviews/spryker-reviews/base-shop/tutorials-and-howtos/howto-configure-product-reviews.html
       - title: Request for Quote
         url: /docs/pbc/all/request-for-quote/request-for-quote.html
         nested:

@@ -14,12 +14,8 @@ redirect_from:
   - /docs/scos/dev/feature-integration-guides/201903.0/glue-api/glue-api-product-rating-and-reviews-feature-integration.html
   - /docs/scos/dev/feature-integration-guides/201907.0/glue-api/glue-api-product-rating-and-reviews-feature-integration.html
   - /docs/scos/dev/feature-integration-guides/202212.0/glue-api/glue-api-product-rating-and-reviews-feature-integration.html
-
+  - /docs/pbc/all/ratings-reviews/202212.0/install-and-upgrade/install-the-product-rating-and-reviews-product-group-feature.html
 related:
-  - title: Product Rating and Reviews feature integration
-    link: docs/scos/dev/feature-integration-guides/page.version/product-rating-and-reviews-feature-integration.html
-  - title: Product Rating and Reviews feature walkthrough
-    link: docs/scos/dev/feature-walkthroughs/page.version/product-rating-reviews-feature-walkthrough.html
   - title: Retrieving abstract products
     link: docs/pbc/all/product-information-management/page.version/base-shop/manage-using-glue-api/abstract-products/glue-api-retrieve-abstract-products.html
   - title: Retrieving concrete products

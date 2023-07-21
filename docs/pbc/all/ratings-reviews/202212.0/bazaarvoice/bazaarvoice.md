@@ -5,7 +5,8 @@ template: howto-guide-template
 redirect_from:
    - docs/aop/user/apps/bazaarvoice.html
    - docs/acp/user/apps/bazaarvoice.html
-   - docs/pbc/all/ratings-reviews/third-party-integrations/bazaarvoice.html  
+   - docs/pbc/all/ratings-reviews/third-party-integrations/bazaarvoice.html
+   - /docs/pbc/all/ratings-reviews/202212.0/third-party-integrations/bazaarvoice.html
 ---
 
 ![Bazaarvoice](https://spryker.s3.eu-central-1.amazonaws.com/docs/pbc/all/ratings-reviews/third-party-integrations/bazaarvoice/bazaarvoice.png)
@@ -35,4 +36,5 @@ If you have Bazaarvoice integrated, the Spryker default the [Ratings and Reviews
 {% endinfo_block %}
 
 ## Next step
-[Integrate Bazaarvoice](/docs/pbc/all/ratings-reviews/{{page.version}}/third-party-integrations/integrate-bazaarvoice.html)
+
+[Integrate Bazaarvoice](/docs/pbc/all/ratings-reviews/{{page.version}}/bazaarvoice/integrate-bazaarvoice.html)

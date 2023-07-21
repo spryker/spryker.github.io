@@ -3,6 +3,8 @@ title: What's changed in Ratings and Reviews
 last_updated: Jul 28, 2022
 description: This document lists all the Ratings & Reviews releases
 template: concept-topic-template
+redirect_from:
+  - /docs/pbc/all/ratings-reviews/202212.0/whats-changed-in-ratings-and-reviews.html
 ---
 
 ## April 18th 2022
