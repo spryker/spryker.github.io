@@ -347,7 +347,7 @@ Unlike category, product details and CMS pages, the home page does not require a
 {% raw %}{%{% endraw %} cms_slot 'slt-2' {% raw %}%}{% endraw %}
 ```
 
-## Database schema—oemplates with slots and CMS blocks content provider
+## Database schema—templates with slots and CMS blocks content provider
 The following image shows the database schema for templates, slots and the Spryker CMS content provider:
 
 ![image](https://spryker.s3.eu-central-1.amazonaws.com/docs/Features/CMS/Templates+%26+Slots/Templates+%26+Slots+Feature+Overview/template-slot-cms-blocks-content-provider.png)
