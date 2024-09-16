@@ -1,13 +1,13 @@
 ---
-title: Backend API Marketplace B2C Demo Shop reference
-description: Reference for the Backend API endpoints in the Spryker B2C Demo Shop Marketplace.
+title: Glue Backend API Marketplace B2C Demo Shop reference
+description: Reference for the Glue Backend API endpoints in the Spryker B2C Demo Shop Marketplace.
 last_updated: Nov 16, 2023
 template: glue-api-storefront-guide-template
 redirect_from:
 - /docs/scos/dev/glue-api-guides/202404.0/backend-glue-infrastructure/backend-api-marketplace-b2c-demo-shop-reference.html
 
 related:
-  - title: Backend API Marketplace B2B Demo Shop reference
+  - title: Glue Backend API Marketplace B2B Demo Shop reference
     link: docs/dg/dev/glue-api/page.version/old-glue-infrastructure/rest-api-marketplace-b2b-demo-shop-reference.html
 ---
 
@@ -23,7 +23,7 @@ This document is an overview of default Backend API endpoints provided by Spryke
 const swaggerContainer = document.getElementById('swagger-ui');
 if(swaggerContainer) {
     console.log('start'); const ui = SwaggerUIBundle({
-        url: 'https://spryker.s3.eu-central-1.amazonaws.com/docs/Marketplace/dev+guides/glue-api-guides/202311.0/rest-api-reference/mp_b2c_spryker_backend_api.schema.yml',
+        url: 'https://spryker.s3.eu-central-1.amazonaws.com/docs/Marketplace/dev+guides/glue-api-guides/202404.0/rest-api-reference/mp_b2c_spryker_backend_api.schema.yml',
         dom_id: '#swagger-ui', deepLinking: true, presets: [
             SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset
         ],
