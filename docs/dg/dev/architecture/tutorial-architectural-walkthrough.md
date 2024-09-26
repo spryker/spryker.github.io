@@ -32,15 +32,11 @@ This tutorial explains the Spryker architecture and how things work altogether. 
 * Add Zed persistence layer in the `HelloSpryker` module to store and get the reversed string to and from the database.
 * Move the functionality that returns the reversed string to a new module (`StringFormat`), then provide the string to the `HelloSpryker` module.
 
-{% info_block infoBox "" %}
-
 This means building a dependency from the `HelloSpryker` module to the `StringFormat` module.
 
-{% endinfo_block %}
+## 1. Build a HelloSpryker module in Zed to reverse the string
 
-## 1. Build a `HelloSpryker` module in Zed to reverse the string
-
-1. To add a new module in Zed, go to `/src/Pyz/Zed` and add a new folder called `HelloSpryker`.
+1. To add a new module in Zed, create the `/src/Pyz/Zed/HelloSpryker` folder.
 
 {% info_block infoBox %}
 
@@ -49,8 +45,8 @@ A new module is a new folder.
 {% endinfo_block %}
 
 2. A `Communication` layer in the module is its entry point. Add it and check if your module responds:
-    1. Under `HelloSpryker`, create a new folder called `Communication`.
-    2. Inside the `Communication` folder, create a folder called `Controller`.
+    1. Create the `/src/Pyz/Zed/HelloSpryker/Communication` folder.
+    2. In the `Communication` folder, create a `Controller` folder.
     3. Create a new controller called `IndexController`. This controller has an action that returns only `HelloSpryker!`:
 
     ```php
@@ -73,11 +69,10 @@ A new module is a new folder.
     }						
     ```
 
-3. To render text in the Zed UI template, add a `Presentation` layer with a twig file, which loads as the action's response.
-    1. Add a new folder called `Presentation`.
-    2. Inside the folder, add a folder for the controller and a twig file for the action: `Index/index.twig`.
+3. To render text in the Back Office UI template, add a `Presentation` layer with a twig file, which loads as the action's response.
+    1. Create a `Presentation` folder.
+    2. In the `Presentation` folder, add a folder for the controller and a twig file for the action: `Index/index.twig`.
     The twig file for your action looks like this:
-
     ```xml
     {% raw %}{%{% endraw %} extends '@Gui/Layout/layout.twig' {% raw %}%}{% endraw %}
     {% raw %}{%{% endraw %} block content {% raw %}%}{% endraw %}
@@ -85,17 +80,20 @@ A new module is a new folder.
     {% raw %}{%{% endraw %} endblock {% raw %}%}{% endraw %}
     ```
 
-4. To see `Hello Spryker!`, go to `https://zed.mysprykershop.com/hello-spryker`.
+4. To see `Hello Spryker!`, go to `https://backoffice.mysprykershop.com/hello-spryker`.
 
-Because reversing a string belongs to the business logic, you need to build a `Business` layer for your module:
 
-1. Inside the `HelloSpryker` module, add a folder called `Business`.
+### Build a business layer for the HelloSpryker module
+
+Because reversing a string belongs to the business logic, you need to build a Business layer for your module:
+
+1. Inside the `HelloSpryker` module, add a `Business` folder.
    The `Business` layer needs three main classes:
-    * `Facade` to work as the main API.
-    * `Factory` to instantiate the needed objects and inject their dependencies.
+    * `Facade`: works as the main API.
+    * `Factory`: instantiates the needed objects and injects their dependencies.
     * `Model` to perform the actual business logic.
 
-2. Build the facade class, and don't forget the facade interface:
+2. Build the facade class, including the facade interface:
 
 ```php
 namespace Pyz\Zed\HelloSpryker\Business;
@@ -125,18 +123,19 @@ class HelloSprykerBusinessFactory extends AbstractBusinessFactory
 4. Inside the `Business` layer, add your model folder and add a class to handle reversing the string.
 5. Call the method as `reverseString()`.
 
-{% info_block infoBox "Info" %}
+{% info_block infoBox "" %}
 
 To reverse the string, you can use the `strrev()` method.
 
 {% endinfo_block %}
 
-To hook things together, follow these steps:
+
+### Add the business layer to the HelloSpryker module
 
 1. Instantiate an object from your class in the factory and let a facade method use the new factory method to get the needed object.
 2. From the object, call the `reverseString()` method.
 
-Your facade method looks like the following example:
+Here's an example of a facade method:
 
 ```php    
 /**
@@ -179,16 +178,16 @@ public function indexAction(Request $request)
 }		
 ```
 
-When accessing a URL in Zed UI, the action responds to the requests, and then it calls the facade, which finally calls the model to perform the needed business logic.
+When accessing a URL in the Back Office, the action responds to the requests, and then it calls the facade, which finally calls the model to perform the needed business logic.
 
-4. To see `!rekyrpS olleH`, go to `https://zed.mysprykershop.com/hello-spryker`.
+4. To see `!rekyrpS olleH`, go to `https://backoffice.mysprykershop.com/hello-spryker`.
 
 ### 2. Build the `HelloSpryker` module in Yves
 
-1. Add a new Yves module called **HelloSpryker** in `/src/Pyz/Yves`.
-2. Add a new controller for the module:
-    1. Add a new folder called Controller inside the `HelloSpryker` module.
-    2. Add the following controller class called `IndexController`:
+1. In `/src/Pyz/Yves`, add a HelloSpryker Yves module.
+2. Add a controller for the module:
+    1. In the `HelloSpryker` module, add a `Controller` folder.
+    2. Add the `IndexController` controller:
 
     ```php
     namespace Pyz\Yves\HelloSpryker\Controller;
@@ -256,26 +255,26 @@ When accessing a URL in Zed UI, the action responds to the requests, and then it
     ```
 
 4. In the application, register `HelloSprykerRouteProviderPlugin`, so the application knows about your controller action.
-5. In the `Router` module, go to the `RouterDependencyProvider::getRouteProvider()` method and add `HelloSprykerRouteProviderPlugin` to the array.
-6. To render your **Hello Spryker** page, add the twig file.
+5. In the `Router` module, add `HelloSprykerRouteProviderPlugin` to the array of the `RouterDependencyProvider::getRouteProvider()` method.
+6. To render the **Hello Spryker** page, add a twig file.
 7. Inside the `HelloSpryker` module, add the following folder structure: `Theme/default/views/index`.
     This folder structure reflects your theme and controller names. `default` is the theme name, and `index` is the controller name.
     For every action, there is a template with the same name.
 8. Because your action is called `index`, add a twig file for your action called `index.twig`:
 
-    ```xml
-    {% raw %}{%{% endraw %} extends template('page-layout-main') {% raw %}%}{% endraw %}
+```xml
+{% raw %}{%{% endraw %} extends template('page-layout-main') {% raw %}%}{% endraw %}
 
-    {% raw %}{%{% endraw %} define data = {
-	    reversedString: _view.reversedString
-    } {% raw %}%}{% endraw %}
+{% raw %}{%{% endraw %} define data = {
+	  reversedString: _view.reversedString
+} {% raw %}%}{% endraw %}
 
-    {% raw %}{%{% endraw %} block content {% raw %}%}{% endraw %}
-	    <div><h2>{% raw %}{{{% endraw %} data.reversedString {% raw %}}}{% endraw %}</h2></div>
-    {% raw %}{%{% endraw %} endblock {% raw %}%}{% endraw %}
-    ```
+{% raw %}{%{% endraw %} block content {% raw %}%}{% endraw %}
+	  <div><h2>{% raw %}{{{% endraw %} data.reversedString {% raw %}}}{% endraw %}</h2></div>
+{% raw %}{%{% endraw %} endblock {% raw %}%}{% endraw %}
+```
 
-### 3. Create a `HelloSpryker` transfer object and use it
+### 3. Create a HelloSpryker transfer object and use it
 
 Transfer objects are a great way to send data from Yves to Zed and to communicate between different objects in general. Transfer object definitions are located in the `Shared` directories because these objects are shared between Yves and Zed.
 
@@ -492,7 +491,7 @@ public function reverseString(HelloSprykerTransfer $helloSprykerTransfer)
 
 Get everything hooked together:
 
-1. In the communication layer of Zed, create `GatewayController`, the one that responds to the client's request.
+1. In the communication layer of Zed, create a `GatewayController` that responds to the client's request.
 
 ```php
 namespace Pyz\Zed\HelloSpryker\Communication\Controller;
