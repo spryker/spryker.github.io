@@ -1,7 +1,7 @@
 ---
-title: Run the docs locally
-description: Learn how to build Spryker docs
-last_updated: Sep 18, 2024
+title: Run the docs locally on Intel Macs
+description: Find out how you can build the Spryker documentation site
+last_updated: Jul 18, 2022
 template: howto-guide-template
 redirect_from:
   - /docs/scos/user/intro-to-spryker/contributing-to-documentation/building-the-documentation-site.html
@@ -22,63 +22,23 @@ related:
 
 We use [Jekyll](https://jekyllrb.com/) to build Spryker docs. You can run Spryker docs on your own machine. This is usually useful when you want to edit some docs and see the changes before submitting a PR.
 
-This document describes how to run Spryker docs on Macs with an M-series processor. For instructions for intel-based Macs, see [Run the docs locally on Intel Macs](/docs/about/all/about-the-docs/run-the-docs-locally-on-intel-macs-linux-and-widnows.html).
+This document describes how to run Spryker docs on Intel-based Macs. For instructions for M-series Macs, see [Run the docs locally](/docs/about/all/about-the-docs/run-the-docs-locally-on-intel-macs-linux-and-widnows.html).
 
 
-## Prerequisites
-
-To enable Rosetta for Terminal, follow the steps:
-
-1. In Finder, go to **Applications**>**Utilities**.
-2. Right-click **Terminal** and select **Get Info**.
-  This opens the **Terminal Info** window.
-3. Select **Open using Rosetta**.
-
-
-## 1. Install Homebrew
-
+## 1. Install Homebrew and Make
 
 1. Install Homebrew:
-
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
-This installs Homebrew and gives you the instructions to use in the next step.
 
-
-2. To add Homebrew to your path, follow the instructions provided in the output of the previous command. Here's an example of the commands, which you need to run one by one.
-
-![homebrew-next-steps](https://spryker.s3.eu-central-1.amazonaws.com/docs/About/all/about-the-docs/run-the-docs-locally.md/homebrew-next-steps.png)
-
-Running these commands should give no output.
-
-Alternately, manually add Homebrew to your path using the instructions in the following section.
-
-### Manually add Homebrew to PATH
-
-1. Open `.zprofile` in the editor:
-```bash
-nano ~/.zprofile
-```
-
-2. Add the following:
-```bash
-# Set PATH, MANPATH, etc., for Homebrew.
-eval "$(/opt/homebrew/bin/brew shellenv)"
-```
-
-3. To save changes, press **control + o**.
-4. To confirm, press **return**.
-5. To close the editor, click **control x**.
-
-
-## 2. Install Make
+2. Install Make:
 
 ```bash
 brew install make
 ```
 
-## 3. Set up the Spryker docs repository
+## 2. Set up the Spryker docs repository
 
 {% info_block warningBox "Duplicate repositories" %}
 
@@ -92,27 +52,22 @@ git clone git@github.com:spryker/spryker-docs.git ./spryker-docs
 cd spryker-docs
 ```
 
-## 3. Install GnuPG, RVM, and Ruby
 
+## 3. Install RVM and Ruby
 
-1. Install GnuPG:
+1. Import RVM keys:
 ```bash
-brew install gnupg
-```
-
-2. Import RVM keys in one of the following ways:
-```bash
-gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://rvm.io/mpapis.asc | gpg --import -
 ```
 
 ```bash
-gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 ```
 
 2. Instal RVM:
 
 ```bash
-curl -sSL https://get.rvm.io | bash
+curl -sSL https://get.rvm.io | bash -s stable
 ```
 
 3. Install Ruby 3.2.2:
@@ -120,15 +75,7 @@ curl -sSL https://get.rvm.io | bash
 rvm install 3.2.2
 ```
 
-
-4. Check the shell you're using:
-```bash
-echo $SHELL
-```
-
-This should be either `zsh` or `bash`.
-
-5. Depending on your shell type, add Ruby 3.2.2 to your environment in one of the following ways:
+4. Depending on your shell type, add Ruby 3.2.2 to your environment in one of the following ways:
   * Zsh:
   ```bash
   echo 'export PATH="$HOME/.gem/ruby/3.2.2/bin:$PATH"' >> ~/.zshrc
@@ -138,30 +85,17 @@ This should be either `zsh` or `bash`.
   echo 'export PATH="$HOME/.gem/ruby/3.2.2/bin:$PATH"' >> ~/.bash_profile
   ```
 
-6. Quit the Terminal.
-
 ## 4. Install Jekyll and Bundler
 
-1. In Terminal, go to the docs' folder using one of the following commands:
-
-```bash
-cd spryker-docs
-```
-
-```bash
-cd Documents/GitHub/spryker-docs
-```
-
-
-2. Install Jekyll and Bundler gems:
+1. Install Jekyll and Bundler gems:
 ```bash
 gem install --user-install bundler jekyll
 ```
 
-3. Install dependencies:
+2. Install dependencies:
 
 ```bash
-arch -arch x86_64 bundle install
+bundle install
 ```
 
 
@@ -169,21 +103,52 @@ arch -arch x86_64 bundle install
 
 Build the website:
 ```bash
-arch -arch x86_64 bundle exec jekyll serve
+bundle exec jekyll serve
 ```
 
 Now, you can access the local instance in a browser at `http://localhost:4000`.
-
 
 
 ## Tips and tricks
 
 * To regenerate only those pages that were added or updated since the last build, build the site with the following command:
 ```bash
-arch -arch x86_64 bundle exec jekyll serve --incremental
+bundle exec jekyll serve --incremental
 ```
-
 * To automatically refresh the page with each change you make to the source files, build the site with the following command:
 ```bash
-arch -arch x86_64 bundle exec jekyll serve --incremental --livereload
+bundle exec jekyll serve --incremental --livereload
 ```
+
+
+
+
+
+
+
+<!---
+
+### Install Jekyll on Windows, Ubuntu, or other Linux systems
+
+#### Prerequisites
+
+To use Jekyll on Windows, Ubuntu, or other Linux systems, you also need to install the following:
+
+* [Ruby](https://www.ruby-lang.org/en/downloads/) version 2.4.0 or higher, including all development headers. To check your version, run `ruby -v`.
+* [RubyGems](https://rubygems.org/pages/download), the latest version. To check your RubyGems version, run `gem -v`.
+* [GCC](https://gcc.gnu.org/install/) and [Make](https://www.gnu.org/software/make/). To check your GCC version, run `gcc -v,g++ -v`, for Make version run `make -v`.
+
+
+#### Install Jekyll on Windows
+
+To install Jekyll on Windows, follow the [official Jekyll on Windows documentation](https://jekyllrb.com/docs/installation/windows/).
+
+#### Install Jekyll on Ubuntu
+
+To install Jekyll on Ubuntu, follow the [official Jekyll on Ubuntu documentation](https://jekyllrb.com/docs/installation/ubuntu/).
+
+#### Other Linux systems
+
+To install Jekyll on other Linux systems, follow the [official Jekyll on Linux documentation](https://jekyllrb.com/docs/installation/other-linux/).
+
+--->
