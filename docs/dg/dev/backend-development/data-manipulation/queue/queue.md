@@ -12,6 +12,8 @@ related:
     link: docs/scos/dev/back-end-development/data-manipulation/queue/queue-pool.html
   - title: Upgrade the RabbitMQ module
     link: docs/scos/dev/module-migration-guides/migration-guide-rabbitmq.html
+  - title: Chunk Size Calculation
+    link: docs/dg/dev/backend-development/data-manipulation/queue/chunk-size-calculation.html
 ---
 
 ## Concepts
@@ -149,7 +151,7 @@ $config[QueueConstants::QUEUE_MESSAGE_CHUNK_SIZE_MAP] = [
 ];
 ?>
 ```
-
+For more detailed information on the Chunk Size Calculator and how it optimzes system performance, [see further details here](https://docs.spryker.com/docs/dg/dev/backend-development/data-manipulation/queue/chunk-size-calculation.html).
 
 2. Register the plugin in `QueueDependencyProvider::getProcessorMessagePlugins()`:
 
