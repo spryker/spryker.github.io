@@ -539,6 +539,8 @@ entries:
                     url: /docs/pbc/all/content-management-system/base-shop/cms-feature-overview/email-as-a-cms-block-overview.html
                   - title: Templates and Slots
                     url: /docs/pbc/all/content-management-system/base-shop/cms-feature-overview/templates-and-slots-overview.html
+              - title: "[RC] Content Generator feature overview"
+                url: /docs/pbc/all/content-management-system/base-shop/content-generator-feature-overview.html
 
               - title: Content items feature overview
                 url: /docs/pbc/all/content-management-system/base-shop/content-items-feature-overview.html
@@ -1231,7 +1233,7 @@ entries:
               - title: Import stores
                 url: /docs/pbc/all/dynamic-multistore/base-shop/import-stores.html
                 include_versions:
-                - "202410.0"  
+                - "202410.0"
 
           - title: Marketplace
             nested:
@@ -1572,7 +1574,7 @@ entries:
                       - title: View merchants
                         url: /docs/pbc/all/merchant-management/marketplace/manage-in-the-back-office/manage-merchants/view-merchants.html
                         include_versions:
-                        - "202410.0"                        
+                        - "202410.0"
 
                   - title: Manage merchant users
                     nested:
