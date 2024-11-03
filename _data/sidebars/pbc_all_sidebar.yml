@@ -541,6 +541,8 @@ entries:
                     url: /docs/pbc/all/content-management-system/base-shop/cms-feature-overview/templates-and-slots-overview.html
               - title: "[RC] Content Generator feature overview"
                 url: /docs/pbc/all/content-management-system/base-shop/content-generator-feature-overview.html
+                include_versions:
+                - "202410.0"  
 
               - title: Content items feature overview
                 url: /docs/pbc/all/content-management-system/base-shop/content-items-feature-overview.html
