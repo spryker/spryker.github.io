@@ -1,10 +1,10 @@
 ---
-title: "Adding new store in multi-db setup"
+title: "Adding new store in a multi-database setup"
 description: Adding and deploying a new store in multi-db store setup requires additional steps and preparation. This guideline contains all the best practices you need to know.
 last_updated: Dec 02, 2024
 template: howto-guide-template
-originalLink: 
-originalArticleId: 
+originalLink:
+originalArticleId:
 redirect_from:
 ---
 
@@ -47,24 +47,24 @@ If you plan to release more stores in the future, focus that this process is eas
 
 ## Step-by-Step Procedure to release a new store(s)
 
-Follow [this guideline](/docs/scos/dev/technical-enhancement-integration-guides/integrate-multi-database-logic.html#define-databases) as a generic technical guideline, which is a requirement from the cloud team, to successfully deploy your new store in a multi-db setup.
+Follow [this guideline](/docs/dg/dev/integrate-and-configure/integrate-multi-database-logic.html#define-databases) as a generic technical guideline, which is a requirement from the cloud team, to successfully deploy your new store in a multi-db setup.
 
 ### Local Setup
 #### New store configuration
 
 * Define a new database and the store in the deploy file, following [that guide](/docs/ca/dev/multi-store-setups/add-and-remove-databases-of-stores.html#remove-the-configuration-of-the-database). As a result you should have:
-  * new database in regions.<region_name>.services.databases 
-  * new store in regions.<region_name>.stores 
-  * new domains in groups.<region_name>.applications  
-* Adjust stores.php with the configurations, relevant for your new store, following generic technical guideline. 
-* Prepare data import configurations and data files, specific to the new store. 
-* Adjust the local environment setup as needed, including configurations and environment variables. Examples: frontend router configuration, code bucket configuration, creating new backoffice users. 
+  * new database in `regions.<region_name>.services.databases`
+  * new store in `regions.<region_name>.stores`
+  * new domains in `groups.<region_name>.applications`  
+* Adjust `stores.php` with the configurations, relevant for your new store, following generic technical guideline.
+* Prepare data import configurations and data files, specific to the new store.
+* Adjust the local environment setup as needed, including configurations and environment variables. Examples: frontend router configuration, code bucket configuration, creating new backoffice users.
 * Document all the steps you have done, to make sure they are repeatable in the future.
 
 #### Running Initial Setup
 
-* Boot the new configurations using the appropriate setup tool. 
-* Execute commands to initialize the database and services for the new store. 
+* Boot the new configurations using the appropriate setup tool.
+* Execute commands to initialize the database and services for the new store.
 * Verify that the new store’s database is correctly initialized with demo data.
 
 #### Setting up additional deployment recipes
@@ -128,7 +128,7 @@ You can also use your custom recipe following the examples above (see “Setting
 * Run the destructive deployment, assuring the right store(s) is specified.
 
 #### Deployment Execution
-* Deploy the new store in the staging environment, ensuring existing stores remain unaffected. 
+* Deploy the new store in the staging environment, ensuring existing stores remain unaffected.
 * Test the new store thoroughly to confirm it operates correctly without impacting other stores, including all the external integrations in the staging mode.
 
 ### Production Setup
@@ -152,8 +152,8 @@ When you plan releasing multiple stores one after another you can save some time
 * Prepare and test the configuration for ALL stores you are planning to release in the future.
 
 #### Staging Setup
-* Prepare staging deploy yml file, containing ALL stores you are planning to release in the future. Open a support request and hand the deploy file to them, explaining your intent and ideally - approx. schedule on when are you going to release all the stores. 
-* Once the preparation is ready - you can revert the configuration, leaving only store you’d like to release now. We recommend to save this configuration separately, to be able to come back to it later. 
+* Prepare staging deploy yml file, containing ALL stores you are planning to release in the future. Open a support request and hand the deploy file to them, explaining your intent and ideally - approx. schedule on when are you going to release all the stores.
+* Once the preparation is ready - you can revert the configuration, leaving only store you’d like to release now. We recommend to save this configuration separately, to be able to come back to it later.
 * Run the destructive deployment, assuring the right store(s) is specified and check the result.
 
 #### Production Setup
