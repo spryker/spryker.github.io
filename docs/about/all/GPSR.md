@@ -1,6 +1,6 @@
 ---
 title: General Product Safety Regulation (GPSR)
-description: The Spryker B2B Suite is a showcase that demonstrates ready-to-use B2B-specific Spryker features in a live implementation.
+description: The General product Safety Regulation (GPSR) and how Spryker can help customers meet the requirements for this new regulation.
 last_updated: Dec 3, 2024
 template: concept-topic-template
 ---
@@ -27,12 +27,19 @@ More specific details can be found below.
 
 Depending on what role your company plays with regard to the product (manufacturer, distributor, economic operator in distance sale etc.), the obligations under these new Regulations may be different. However, we can help you generally with the following requirements of the Regulation: 
 
-| Show the name, registered trade name, or trademark of the manufacturer (and, where the manufacturer is not established in the EU, of the responsible person in the EU), postal address, and electronic contact details  How you can do this with Spryker:  Backoffice: Create a new [product attribute](https://docs.spryker.com/docs/pbc/all/product-information-management/202410.0/base-shop/feature-overviews/product-feature-overview/product-attributes-overview.html) (input type “textarea”, “Allow input any value other than predefined ones” is activated) and assign it to the relevant products of a specific manufacturer. Also works via the data importer.  Backoffice: Create a single CMS block per required manufacturer, assign this block to the [Product slot](https://docs.spryker.com/docs/pbc/all/content-management-system/202410.0/base-shop/cms-feature-overview/templates-and-slots-overview.html#slot), and select specific SKUs of that manufacturer. Also works via the data importer.    |
-| :---- |
+> ### Show the name, registered trade name, or trademark of the manufacturer (and, where the manufacturer is not established in the EU, of the responsible person in the EU), postal address, and electronic contact details  
+>
+> How you can do this with Spryker:
+>
+> 1. Backoffice: Create a new [product attribute](https://docs.spryker.com/docs/pbc/all/product-information-management/202410.0/base-shop/feature-overviews/product-feature-overview/product-attributes-overview.html) (input type “textarea”, “Allow input any value other than predefined ones” is activated) and assign it to the relevant products of a specific manufacturer. Also works via the data importer.
+> 2. Backoffice: Create a single CMS block per required manufacturer, assign this block to the [Product slot](https://docs.spryker.com/docs/pbc/all/content-management-system/202410.0/base-shop/cms-feature-overview/templates-and-slots-overview.html#slot), and select specific SKUs of that manufacturer. Also works via the data importer.
 
-| Provide information allowing the identification of the product, including pictures, product type, identifiers  How you can do this with Spryker: For images, the [Product images](https://docs.spryker.com/docs/pbc/all/product-information-management/202410.0/base-shop/feature-overviews/product-feature-overview/product-images-overview.html) feature should be used. Product attributes should be used for any specific product-related information.   |
-| :---- |
+> ### Provide information allowing the identification of the product, including pictures, product type, identifiers
+> How you can do this with Spryker:
+> 1. For images, the [Product images](https://docs.spryker.com/docs/pbc/all/product-information-management/202410.0/base-shop/feature-overviews/product-feature-overview/product-images-overview.html) feature should be used.
+> 2. Product attributes should be used for any specific product-related information.
 
-| Indicate clear warnings or safety information to be affixed to the product  How you can do this with Spryker: Backoffice: This can be done via product attributes or CMS blocks, as described above in the first box.  |
-| :---- |
+> ### Indicate clear warnings or safety information to be affixed to the product  
+> How you can do this with Spryker: 
+> 1. Backoffice: This can be done via product attributes or CMS blocks, as described above in the first box. 
 
