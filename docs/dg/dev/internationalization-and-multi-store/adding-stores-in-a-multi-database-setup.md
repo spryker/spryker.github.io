@@ -60,33 +60,43 @@ Reconsider the prior topics relative to your frontend. For example–frontend se
 
 For general instructions for defining new databases, connecting them with new stores, and adding configuration, follow [Integrate multi-database logic](/docs/dg/dev/integrate-and-configure/integrate-multi-database-logic.html).
 
-### Local Setup
+### Local setup
+
 #### New store configuration
 
-* Define a new database and the store in the deploy file, following [that guide](/docs/ca/dev/multi-store-setups/add-and-remove-databases-of-stores.html#remove-the-configuration-of-the-database). As a result you should have:
-  * new database in `regions.<region_name>.services.databases`
-  * new store in `regions.<region_name>.stores`
-  * new domains in `groups.<region_name>.applications`  
-* Adjust `stores.php` with the configurations, relevant for your new store, following generic technical guideline.
-* Prepare data import configurations and data files, specific to the new store.
-* Adjust the local environment setup as needed, including configurations and environment variables. Examples: frontend router configuration, code bucket configuration, creating new backoffice users.
-* Document all the steps you have done, to make sure they are repeatable in the future.
+* Using [Add and remove databases of stores](/docs/ca/dev/multi-store-setups/add-and-remove-databases-of-stores.html#remove-the-configuration-of-the-database), define the following new entities in your deploy file:
+
+| ENTITY | SECTION |
+| Database | `regions.<region_name>.services.databases` |
+ | Store | `regions.<region_name>.stores`|
+| Domains | `groups.<region_name>.applications`  |
+
+* Using [Integrate multi-database logic](/docs/dg/dev/integrate-and-configure/integrate-multi-database-logic.html), add the configuration needed for the new store to `stores.php`.
+* Prepare data import configurations and data files for the new store.
+* Adjust the local environment setup as needed, including configurations and environment variables. Examples:
+  * Frontend router configuration
+  * Code bucket configuration
+  * Create new Back Office users
+* To make sure these steps are repeatable in future, document them.
 
 #### Running initial setup locally
 
-* Bootstrap your updated configuration and run your environment as usual:
+Bootstrap your updated configuration and run the project:
   ```bash
   docker/sdk boot deploy.dev.yml
   docker/sdk up
   ```
-* Verify that the new store’s database is correctly initialized and filled up with the demo data.
+
+Make sure the new store’s database has been correctly initialized and filled up with the demo data.
 
 #### Setting up additional deployment recipes
 
-It is convenient to create additional deployment install recipes (located under config/install folder) to setup a new and delete an existing stores, for testing purposes. Below is an example of such setup that proves to be working well on prcatice. We took the existing folder structure, and EU folder as a base, but you can introduce your structure:
+When adding and deleting stores, for testing purposes, we recommend creating additional deployment install recipes in `config/install`. The following are examples of such recipes, which we tested in action. The recipes use the existing folder structure, and EU folder as a base, but you can introduce your own structure.
 
-1. config/install/EU/setup-store.yml - contains everything needed to do a minimal setup of a new store(s):
-```
+A minimal recipe for adding a store:
+
+**config/install/EU/setup-store.yml**
+```json
 env:
   NEW_RELIC_ENABLED: 0
 command-timeout: 7200
@@ -105,7 +115,9 @@ sections:
       stores: true
   ...
 ```
-2. config/install/EU/delete-store.yml - contains everything needed to remove an existing store(s):
+
+A minimal recipe to remove a store:
+**config/install/EU/delete-store.yml**
 ```
 env:
     NEW_RELIC_ENABLED: 0
@@ -125,20 +137,37 @@ sections:
             stores: true
     ...
 ```
-In further sections below you’ll see how you can use your new custom recipe during the deployment in your main deployment yml file’s “SPRYKER_HOOK_DESTRUCTIVE_INSTALL“ parameter as following:
 
-```SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install {STORES_GO_HERE} -r EU/setup-store --no-ansi -vvv"```
+You can use these custom recipes for the deployment of the application by adding them to your main deployment file. Examples:
 
-or
+```json
+...
+SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install {STORES_GO_HERE} -r EU/setup-store --no-ansi -vvv"
+...
+```
 
-```SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install {STORES_GO_HERE} -r EU/delete-store --no-ansi -vvv"```
+```json
+...
+SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install {STORES_GO_HERE} -r EU/delete-store --no-ansi -vvv"
+...
+```
 
-### Staging Setup
-#### Environment Configuration
+More information on this is provided in the following sections.
 
-* Update the staging environment’s configuration to include the new store.
-* For database to be initialised, you will need to run a destructive deployment for your new store. To assure existing stores are not affected, you need to specify only new store code(s) in your deployment yml file (image.environment section), in `SPRYKER_HOOK_DESTRUCTIVE_INSTALL`. Example, for new PL and AT stores to be introduced:
-`SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install PL,AT -r EU/destructive --no-ansi -vvv"`
+### Staging setup
+
+
+#### Environment configuration
+
+* Add the configuration for the new store to the staging environment’s configuration.
+
+
+For the database to be initialized, you will need to run a destructive deployment for the new store.
+
+To make sure existing stores are not affected, you need to specify only new store code(s) in your deployment yml file (image.environment section), in `SPRYKER_HOOK_DESTRUCTIVE_INSTALL`.
+
+Example, for new PL and AT stores to be introduced: `SPRYKER_HOOK_DESTRUCTIVE_INSTALL: "vendor/bin/install PL,AT -r EU/destructive --no-ansi -vvv"`
+
 You can also use your custom recipe following the examples above (see “Setting up additional deployment recipes “)
 
 #### Support Requests
