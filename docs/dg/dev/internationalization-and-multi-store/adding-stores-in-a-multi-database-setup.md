@@ -1,5 +1,5 @@
 ---
-title: "Adding new store in a multi-database setup"
+title: "Adding stores in a multi-database setup"
 description: Adding and deploying a new store in multi-db store setup requires additional steps and preparation. This guideline contains all the best practices you need to know.
 last_updated: Dec 02, 2024
 template: howto-guide-template
@@ -8,50 +8,57 @@ originalArticleId:
 redirect_from:
 ---
 
-Setting up a new store in an existing multi-DB environment requires a carefully crafted plan to ensure that the data and operations of existing stores remain unaffected. This guide outlines a detailed procedure for launching a new store within a region that already hosts other stores, guaranteeing a seamless and safe deployment.
+Setting up a new store in an existing multi-database environment requires a carefully crafted plan to ensure that the data and operations of existing stores remain unaffected. This document describes how to launch a new store within a region that already hosts other stores, guaranteeing a seamless and safe deployment.
 
 {% info_block warningBox %}
-This guide is applicable in scenarios where store configurations and setups are managed programmatically through code. If you are utilizing the Dynamic Multistore feature to manage your stores via Backoffice, please refer to this {guide}(/docs/pbc/all/dynamic-multistore/202410.0/dynamic-multistore.html)
+This guide can be used for projects that are managing stores programmatically through code. If you're using the Dynamic Multistore feature to manage your stores in the Back Office, refer to [Dynamic Multistore](/docs/pbc/all/dynamic-multistore/202410.0/dynamic-multistore.html)
 {% endinfo_block %}
 
 ## Initial planning and best practices
 
-### Clear Roadmap
-It is good to have overall plan, detailing all stores that will be added in the future. This can impact not only database structure and configurations, but overall decisions on how to approach the rollout, making sure it is cost-efficient over time, on all ends.
+This section describes the planning stage of launching a store.
+
+### Clear roadmap
+
+It's good to have an overall plan, detailing all the stores you want to add in future. This can affect database structure, configuration, and overall decisions on how to approach the rollout, making sure it is cost-efficient over time, on all ends.
+
 
 ### Backup strategy
-Always have a backup plan ready in case of issues during the deployment. This includes not only database backups but also considerations on all points you will find below, including the business side.
 
-### Environment Preparation
-Prepare your production and non-production environments for a new store rollout. Make sure you don’t have additional functionality to be released on top or parallel development. This involves ensuring that teams are prepared and stakeholders are aware of the procedure.
+A backup plan needs to be ready in case of issues during deployment. Apart from database backups, this includes considerations on all the points in the following sections, including the business side.
+
+### Environment preparation
+To prepare your production and non-production environments for a store rollout, make sure there's no additional functionality to be released on top or parallel development. Teams and stakeholders need to be prepared and aware of the procedure.
 
 ### Repeatability
-If you plan to release more stores in the future, focus that this process is easily repeatable in the future. That includes creating detailed technical documentation, release procedure, and tickets (epics, stories, tasks) in your project management software. This can be a detailed script or checklist tailored to your project, covering all relevant steps, configurations, and integrations. This documentation will be invaluable for future deployments and troubleshooting.
+If you're planning to release more stores in future, prepare process to be easily repeatable. This includes creating various detailed documentation, release procedure, and tickets, such as epics, stories, tasks, in your project management software. This can be a detailed script or checklist tailored to your project, covering all relevant steps, configurations, and integrations.
 
-## Detailed Considerations for the Migration
 
-### Integrations and 3rd party systems
-* Review and adjust all third-party integrations to ensure they work with the new store setup. Here we mainly talk about data and it’s isolation across multiple virtual DBs. Assure that people working with both sides of the system (backend, frontend, merchant portal and APIs) do have all needed data access.
-* Integrations such as single sign-on, payment gateways, inventory systems may require updates. Make sure tech teams responsible for that systems are available, and ready to do necessary changes on time.
+## Detailed considerations for the migration
 
-### Data Import
+### Integrations and third-party systems
+* Review and adjust all third-party integrations to ensure they work with the new store setup. This mainly concerns data and it’s isolation across multiple virtual DBs. Make sure that people working with both sides of the system, such as backend, frontend, merchant portal and APIs, have access to all the needed data.
+* Integrations, such as single sign-on, payment gateways, or inventory systems, may require updates. Make sure tech teams responsible for those systems are available and ready to do needed changes on time.
+
+### Data import
 * Handle the data import process carefully, breaking it down into specific tasks such as configuring databases and adjusting the data import setup to work with the new store.
-* Ensure any existing databases, such as the one from another country in one case, are correctly renamed or adjusted to fit the new multi-DB structure.
-* Anticipate and plan for potential updates that may arise after end2end testing of the project data migration.
+* Make sure existing DBs, for example–a DB from another country, are correctly renamed or adjusted to fit the new multi-DB structure.
+* Anticipate and plan for potential updates that may arise after end-to-end testing of the project data migration.
 
-### Code Buckets
-* If used, investigate and adjust code bucket configurations as necessary. The technical steps required for these adjustments should be documented thoroughly, ensuring that code-bucket related functionalities are not disrupted by the addition of a new store.
+### Code buckets
+* If code buckets are used, investigate and adjust their configurations as necessary. Thoroughly document the steps for adjusting the configurations, making sure that code bucket keep working properly after a new store is added.
 
 ### Cloud environment and monitoring
-* Think of and adjust monitoring tools and APM (such as NewRelic, CloudWatch) to accommodate the new store. Check that all alerts and metrics are correctly configured to monitor the health and performance of the new store alongside existing ones.
-* Think of adjusting AWS Services such as S3, introducing buckets for the new store(s).
+* Consider and adjust monitoring tools and APM, such as NewRelic and CloudWatch, to accommodate the new store. Check that all alerts and metrics are correctly configured to monitor the health and performance of the new store.
+* Check if you need to adjust AWS services, for example–introduce buckets for the new store in S3.
 
-### Front-end Considerations
-* Consider any other activities related to the above epics that might impact the deployment. For instance, front-end separation might be a significant task, requiring layout adjustments between different stores and possible adjustments on the API side.
+### Frontend considerations
 
-## Step-by-Step Procedure to release a new store(s)
+Reconsider the prior topics relative to your frontend. For example–frontend separation might be a significant task, requiring layout changes between different stores and API changes.
 
-Follow [this guideline](/docs/dg/dev/integrate-and-configure/integrate-multi-database-logic.html#define-databases) as a generic technical guideline for defining new database(s), connecting them with new store(s) and adding necessary configuration.
+## Releasing stores
+
+For general instructions for defining new databases, connecting them with new stores, and adding configuration, follow [Integrate multi-database logic](/docs/dg/dev/integrate-and-configure/integrate-multi-database-logic.html).
 
 ### Local Setup
 #### New store configuration
