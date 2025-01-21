@@ -1,4 +1,4 @@
----
+фывфыв---
 title: Check Spryker Code Upgrader logs
 description: Learn how to check Spryker Code Upgrader logs to troubleshoot upgrade issues, with step-by-step instructions for accessing detailed logs in the Upgrader UI.
 template: howto-guide-template
